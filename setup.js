@@ -1,18 +1,19 @@
 //SOLO MODIFICAR ESTE JOTAESE. PENESEGURO ES LA COPIA DE SEGURIDAD.
 const arrNuevo = [ //Array original que viene de la ESP32
-  { name: 'lux', value: 224, state: false },
+  { name: 'lux', value: 230, state: false },
   { name: 'flama', value: 0, state: false },
   { name: 'humo', value: 242, state: false }
 ];
 
 //Valores arrastrados a este array para que se definan como arrayAnterior y se elimine al pasar 2 ciclos.
-// let arrAnterior = [...arrNuevo]; //Copia del array nuevo (original) a manera de ejemplificar una dinámica más "realista".
+//...arrNuevo estaría descomentado para el proyecto final, y el de las lineas 12 a 16 se comentaría.
+let arrViejo = [...arrNuevo]; //Copia del array nuevo (original) a manera de ejemplificar una dinámica más "realista".
 
-const arrAnterior = [ //este array se usa sólo para ver que cambie de valor la grafica más exactamente.
-  { name: 'lux', value: 230, state: false },
-  { name: 'flama', value: 0, state: false },
-  { name: 'humo', value: 242, state: false }
-];
+// const arrViejo = [ //este array se usa sólo para ver que cambie de valor la grafica más exactamente.
+//   { name: 'lux', value: 224, state: false },
+//   { name: 'flama', value: 0, state: false },
+//   { name: 'humo', value: 242, state: false }
+// ];
 // IMPORTANTE LEER => SE ME OCURRIÓ QUE al estar actualizandose constantemente arrNuevo(es el array mandado por la ESP32), que se cree otro array llamado anterior que guarde los valores del arrayNuevo que 1 segundo después será viejo, así que se hace esa copia en ese array auxiliar y se actualiza el array de la ESP, por lo que siempre es nuevo. Más tarde en la línea 163 se establecen estos cambios que te digo para que en el código base de amCharts se borre el valor anerior que se imprimió en la gráfica.
 
 am5.ready(() => { //Una vez que la biblioteca amCharts esté lista, el código se ejecutará.
@@ -188,7 +189,7 @@ am5.ready(() => { //Una vez que la biblioteca amCharts esté lista, el código s
   function addData(){
     let lastDataItem = series.dataItems[series.dataItems.length - 1];
 
-    let lastValue = arrAnterior[0].value;//series.dataItems[series.dataItems.length -2].get("valueY");//lastDataItem.get("valueY");
+    let lastValue = arrViejo[0].value;//series.dataItems[series.dataItems.length -2].get("valueY");//lastDataItem.get("valueY");
     let newValue = arrNuevo[0].value;//value;// + ((Math.random() < 0.5 ? 1 : -1) * Math.random() * 5); //VER Q PEDO AQUI. HACER QUE NEWVALUE SEA LA SIGUIENTE LLEGADA DE INFO DEL ARRAY DE OBJETOS.
     let lastDate = new Date(lastDataItem.get("valueX"));
     let time = am5.time.add(new Date(lastDate), "second", 1).getTime();
@@ -235,7 +236,7 @@ am5.ready(() => { //Una vez que la biblioteca amCharts esté lista, el código s
   // RECOMENDACION DE CHATGPT (reemplazo de addData())----------------------------------
   // function updateChart() {
   //   let lastDataItem = series.dataItems[series.dataItems.length - 1];
-  //   let lastValue = arrAnterior[0].value;//lastDataItem.get("valueY");
+  //   let lastValue = arrViejo[0].value;//lastDataItem.get("valueY");
   //   let newValue = arrNuevo[0].value;
   //   let lastDate = new Date(lastDataItem.get("valueX"));
   //   let time = am5.time.add(new Date(lastDate), "second", 1).getTime();
