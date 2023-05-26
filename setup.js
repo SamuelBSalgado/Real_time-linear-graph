@@ -6,7 +6,7 @@ const arrNuevo = [ //Array original que viene de la ESP32
 ];
 
 //Valores arrastrados a este array para que se definan como arrayAnterior y se elimine al pasar 2 ciclos.
-//...arrNuevo estaría descomentado para el proyecto final, y el de las lineas 12 a 16 se comentaría.
+//"let arrViejo = [...arrNuevo];"" estaría descomentado para el proyecto final, y el de las lineas 12 a 16 se comentaría.
 let arrViejo = [...arrNuevo]; //Copia del array nuevo (original) a manera de ejemplificar una dinámica más "realista".
 
 // const arrViejo = [ //este array se usa sólo para ver que cambie de valor la grafica más exactamente.
