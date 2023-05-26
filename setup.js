@@ -14,7 +14,7 @@ let arrViejo = [...arrNuevo]; //Copia del array nuevo (original) a manera de eje
 //   { name: 'flama', value: 0, state: false },
 //   { name: 'humo', value: 242, state: false }
 // ];
-// IMPORTANTE LEER => SE ME OCURRIÓ QUE al estar actualizandose constantemente arrNuevo(es el array mandado por la ESP32), que se cree otro array llamado anterior que guarde los valores del arrayNuevo que 1 segundo después será viejo, así que se hace esa copia en ese array auxiliar y se actualiza el array de la ESP, por lo que siempre es nuevo. Más tarde en la línea 163 se establecen estos cambios que te digo para que en el código base de amCharts se borre el valor anerior que se imprimió en la gráfica.
+// IMPORTANTE LEER => SE ME OCURRIÓ QUE al estar actualizandose constantemente arrNuevo(es el array mandado por la ESP32), que se cree otro array llamado anterior que guarde los valores del arrayNuevo que 1 segundo después será viejo, así que se hace esa copia en ese array auxiliar y se actualiza el array de la ESP, por lo que siempre es nuevo. Más tarde en la línea 192 se establecen estos cambios que te digo para que en el código base de amCharts se borre el valor anerior que se imprimió en la gráfica.
 
 am5.ready(() => { //Una vez que la biblioteca amCharts esté lista, el código se ejecutará.
   
